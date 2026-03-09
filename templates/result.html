@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pancreas Tumor Detection - Results</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 60%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.15);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        img.uploaded-img {
+            width: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 4px solid #ddd;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-size: 18px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #bbb;
+        }
+        th {
+            background-color: #4a90e2;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+        .btn {
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .btn:hover {
+            background-color: #3578c7;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Prediction Results</h1>
+
+    <!-- Uploaded Image Display -->
+    <img src="{{ image_url }}" class="uploaded-img" alt="Uploaded Image">
+
+    <!-- Results Table -->
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Prediction</th>
+            <th>Probability (Tumor)</th>
+        </tr>
+        
+        <tr>
+            <td>VGG16</td>
+            <td>{{ pred_vgg }}</td>
+            <td>{{ "%.4f"|format(prob_vgg) }}</td>
+        </tr>
+
+        <tr>
+            <td>ResNet50</td>
+            <td>{{ pred_resnet }}</td>
+            <td>{{ "%.4f"|format(prob_resnet) }}</td>
+        </tr>
+    </table>
+
+    <a class="btn" href="/">Upload Another Image</a>
+</div>
+
+</body>
+</html>
